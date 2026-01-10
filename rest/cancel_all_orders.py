@@ -5,9 +5,10 @@ from solders.keypair import Keypair
 
 from common.constants import REST_URL
 from common.utils import sign_message
+import config
 
 API_URL = f"{REST_URL}/orders/cancel_all"
-PRIVATE_KEY = ""  # e.g. "2Z2Wn4kN5ZNhZzuFTQSyTiN4ixX8U6ew5wPDJbHngZaC3zF3uWNj4dQ63cnGfXpw1cESZPCqvoZE7VURyuj9kf8b"
+PRIVATE_KEY = config.PRIVATE_KEY  # e.g. "2Z2Wn4kN5ZNhZzuFTQSyTiN4ixX8U6ew5wPDJbHngZaC3zF3uWNj4dQ63cnGfXpw1cESZPCqvoZE7VURyuj9kf8b"
 
 
 def main():

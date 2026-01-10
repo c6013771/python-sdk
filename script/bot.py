@@ -9,6 +9,8 @@ from datetime import datetime, timedelta
 import json
 import csv
 from pathlib import Path
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # --- 配置区 ---
 SYMBOL = 'BTC/USDT'
@@ -352,10 +354,17 @@ class TradingBot:
 # 创建交易机器人实例
 bot = TradingBot(SYMBOL, TIMEFRAME)
 
+my_proxy = 'http://127.0.0.1:10808'
+
 # 初始化交易所
 exchange = ccxt.okx({
+    'verify': False, # 临时跳过 SSL 验证，确认是否为证书冲突
     'enableRateLimit': True,
-    'options': {'defaultType': 'spot'}
+    'options': {'defaultType': 'spot'},
+    # 'proxies': {
+    #         'http': my_proxy,
+    #         'https': my_proxy,
+    # }
 })
 
 
